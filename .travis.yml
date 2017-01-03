@@ -1,0 +1,18 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+install: true
+
+before_script:
+  - echo "Travis branch is $TRAVIS_BRANCH"
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -t univizor/spark-base .
+
+after_script:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker push univizor/spark-base:latest;
+    fi
