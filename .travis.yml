@@ -12,6 +12,11 @@ before_script:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker build -t univizor/spark-base .
 
+script:
+  - docker run -ti --rm univizor/spark-base scala -version | grep Scala
+  - docker run -ti --rm univizor/spark-base java -version | grep java
+  - docker run -ti --rm univizor/spark-base javac -version | grep javac
+
 after_script:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker push univizor/spark-base:latest;
