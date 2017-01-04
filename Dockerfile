@@ -1,9 +1,7 @@
-#
 # Dockerfile with Oracle Java 8. Scala 2.11.8 and scala-sbt 0.13.13
 # Based on Ubuntu Xenial
 # Adapted from https://github.com/dockerfile/java
 # Maintained by Jozko Skrablin
-#
 
 # Pull base image.
 FROM ubuntu:xenial
